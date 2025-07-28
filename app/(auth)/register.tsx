@@ -4,15 +4,12 @@ import Input from "@/components/Input";
 import ScreenWrapper from "@/components/ScreenWrapper";
 import Typo from "@/components/Typo";
 import { colors, spacingX, spacingY } from "@/constants/theme";
-import { useFonts } from "expo-font";
 import { router } from "expo-router";
 import { EnvelopeIcon, LockIcon, UserIcon } from "phosphor-react-native";
 import React from "react";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
 
 const register = () => {
- 
-
   return (
     <ScreenWrapper>
       <View style={styles.container}>
@@ -28,22 +25,28 @@ const register = () => {
             Sign up
           </Typo>
           <View style={{ paddingVertical: spacingY._5 }}>
-          <Typo
-            fontWeight={"400"}
-            color={colors.textLight}
-            size={15}
-            style={{ fontFamily: "Poppins-Regular",gap: spacingY._10, rowGap: spacingY._10 }}
-          >
-            Create a new account
-          </Typo>
+            <Typo
+              fontWeight={"400"}
+              color={colors.textLight}
+              size={15}
+              style={{
+                fontFamily: "Poppins-Regular",
+                gap: spacingY._10,
+                rowGap: spacingY._10,
+              }}
+            >
+              Create a new account
+            </Typo>
           </View>
 
           {/* Input Container */}
           <View style={{ marginTop: spacingY._35, gap: spacingY._20 }}>
-            <Input  placeholder="Name" icon={<UserIcon />} />
+            <Input placeholder="Name" icon={<UserIcon />} />
             <Input placeholder="Email" icon={<EnvelopeIcon />} />
             <Input secureTextEntry placeholder="Password" icon={<LockIcon />} />
-            <Button onPress={()=>router.navigate('/(auth)/phoneVerify')}>
+            <Button
+              onPress={() => router.navigate("/(modals)/phoneVerify_Modal")}
+            >
               <Typo
                 fontWeight={"600"}
                 size={14}
@@ -91,38 +94,34 @@ const register = () => {
               </Typo>
             </View>
           </View>
-
-
-         
         </View>
-        
       </View>
-       {/* Footer Text */}
+      {/* Footer Text */}
 
-          <View style={styles.footerTextContainer}>
-            <Typo
-              fontWeight="400"
-              color={colors.textLight}
-              size={13}
-              style={styles.text}
-            >
-              Already have an account?{" "}
-            </Typo>
-            <TouchableOpacity>
-            <Typo
-              fontWeight="700"
-              color={colors.primary} // or any blue color you like
-              size={13}
-              style={[styles.text, { textDecorationLine: "underline" }]}
-              onPress={() => {
-                // navigation.navigate('Login') or Linking.openURL()
-                console.log("Login clicked");
-              }}
-            >
-              Sign In
-            </Typo>
-            </TouchableOpacity>
-          </View>
+      <View style={styles.footerTextContainer}>
+        <Typo
+          fontWeight="400"
+          color={colors.textLight}
+          size={13}
+          style={styles.text}
+        >
+          Already have an account?{" "}
+        </Typo>
+        <TouchableOpacity>
+          <Typo
+            fontWeight="700"
+            color={colors.primary} // or any blue color you like
+            size={13}
+            style={[styles.text, { textDecorationLine: "underline" }]}
+            onPress={() => {
+              // navigation.navigate('Login') or Linking.openURL()
+              console.log("Login clicked");
+            }}
+          >
+            Sign In
+          </Typo>
+        </TouchableOpacity>
+      </View>
     </ScreenWrapper>
   );
 };
@@ -149,11 +148,11 @@ const styles = StyleSheet.create({
     fontFamily: "Poppins-Regular",
     textAlign: "center",
   },
-  footerTextContainer:{
+  footerTextContainer: {
     paddingVertical: spacingY._10,
     alignItems: "center",
     flexDirection: "row",
     justifyContent: "center",
-    bottom:0,
-  }
+    bottom: 0,
+  },
 });

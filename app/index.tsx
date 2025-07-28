@@ -1,30 +1,27 @@
-import BackButton from "@/components/BackButton";
 import Button from "@/components/Button";
-import Input from "@/components/Input";
-import ScreenWrapper from "@/components/ScreenWrapper";
 import Typo from "@/components/Typo";
-import { colors, spacingX, spacingY } from "@/constants/theme";
+import { spacingX, spacingY } from "@/constants/theme";
 import { useFonts } from "expo-font";
 import { useRouter } from "expo-router";
-import { EnvelopeIcon, LockIcon, UserIcon } from "phosphor-react-native";
-import React, { useEffect } from "react";
+import React from "react";
 import { StyleSheet, View } from "react-native";
 
 const index = () => {
   const [fontsLoaded] = useFonts({
     "Poppins-Regular": require("../assets/fonts/Poppins-Regular.ttf"),
   });
-  
-  const router=useRouter();
+
+  const router = useRouter();
   if (!fontsLoaded) {
     return null; // or a loading indicator
   }
 
- 
   return (
     <View style={styles.container}>
-   <Button onPress={()=>router.navigate('/(auth)/login')} ><Typo>Hello</Typo></Button>
-   </View>
+      <Button onPress={() => router.navigate("/(modals)/emailSuccessfulModal")}>
+        <Typo>Hello</Typo>
+      </Button>
+    </View>
   );
 };
 
@@ -50,11 +47,11 @@ const styles = StyleSheet.create({
     fontFamily: "Poppins-Regular",
     textAlign: "center",
   },
-  footerTextContainer:{
+  footerTextContainer: {
     paddingVertical: spacingY._30,
     alignItems: "center",
     flexDirection: "row",
     justifyContent: "center",
-    bottom:0,
-  }
+    bottom: 0,
+  },
 });

@@ -1,9 +1,11 @@
 import BackButton from "@/components/BackButton";
+import Button from "@/components/Button";
 import Input from "@/components/Input";
 import ScreenWrapper from "@/components/ScreenWrapper";
 import Typo from "@/components/Typo";
 import { colors, spacingX, spacingY } from "@/constants/theme";
 import { verticalScale } from "@/utils/styling";
+import { router } from "expo-router";
 import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
 
@@ -35,8 +37,18 @@ const phoneVerify = () => {
           </Typo>
         </View>
         <View>
-          <Input countryCode={true}  />
+          <Input countryCode={true} />
         </View>
+        <Button onPress={() => router.push("/(modals)/otpVerifyModal")}>
+          <Typo
+            fontWeight="600"
+            size={14}
+            color={colors.white}
+            style={{ fontFamily: "Poppins-Regular" }}
+          >
+            Continue
+          </Typo>
+        </Button>
       </View>
     </ScreenWrapper>
   );

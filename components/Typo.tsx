@@ -1,28 +1,27 @@
-import { StyleSheet, Text, TextStyle, View } from "react-native";
-import React from "react";
 import { TypoProps } from "@/types";
 import { verticalScale } from "@/utils/styling";
+import React from "react";
+import { Text, TextStyle } from "react-native";
 
-export default function Typo  ({
+export default function Typo({
   size,
   color,
   fontWeight,
   children,
   style,
   textProps,
-}: TypoProps)  {
-  //text Style Object
+}: TypoProps) {
+  
   const textStyle: TextStyle = {
     fontSize: size ? verticalScale(size) : verticalScale(18),
     color,
     fontWeight,
+    fontFamily: "Poppins-Regular",
   };
+
   return (
-    <View>
-      <Text style={[textStyle]}>{children}</Text>
-    </View>
+    <Text style={[textStyle, style]} {...textProps}>
+      {children}
+    </Text>
   );
-};
-
-
-const styles = StyleSheet.create({});
+}

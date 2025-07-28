@@ -29,16 +29,18 @@ const Input = (props: InputProps) => {
   return (
     <View style={[styles.container, props.containerStyle]}>
       {iconWithStyle}
-          {props.countryCode && (
-            <PhoneInput
-            
-            style={[styles.inputStyle, props.inputStyle,{borderWidth:0,alignItems:'center',justifyContent:'center'}]}
-            value={inputValue}
-            onChangePhoneNumber={handleInputValue}
-            selectedCountry={selectedCountry}
-            
-            onChangeSelectedCountry={handleSelectedCountry}
-            />
+      {props.countryCode && (
+        <PhoneInput
+          style={[
+            styles.inputStyle,
+            props.inputStyle,
+            { borderWidth: 0, alignItems: "center", justifyContent: "center" },
+          ]}
+          value={inputValue}
+          onChangePhoneNumber={handleInputValue}
+          selectedCountry={selectedCountry}
+          onChangeSelectedCountry={handleSelectedCountry}
+        />
       )}
       <TextInput
         style={[styles.inputStyle, props.inputStyle]}
