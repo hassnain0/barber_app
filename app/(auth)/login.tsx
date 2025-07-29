@@ -9,11 +9,10 @@ import React from "react";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
 
 const login = () => {
-    const router = useRouter();
+  const router = useRouter();
   return (
     <ScreenWrapper>
       <View style={styles.container}>
-
         <View
           style={{ paddingTop: spacingY._50, paddingHorizontal: spacingX._20 }}
         >
@@ -25,21 +24,25 @@ const login = () => {
             Sign In
           </Typo>
           <View style={{ paddingVertical: spacingY._5 }}>
-          <Typo
-            fontWeight={"400"}
-            color={colors.textLight}
-            size={15}
-            style={{ fontFamily: "Poppins-Regular",gap: spacingY._10, rowGap: spacingY._10 }}
-          >
-            Welcome Back
-          </Typo>
+            <Typo
+              fontWeight={"400"}
+              color={colors.textLight}
+              size={15}
+              style={{
+                fontFamily: "Poppins-Regular",
+                gap: spacingY._10,
+                rowGap: spacingY._10,
+              }}
+            >
+              Welcome Back
+            </Typo>
           </View>
 
           {/* Input Container */}
           <View style={{ marginTop: spacingY._35, gap: spacingY._20 }}>
             <Input placeholder="Email" icon={<EnvelopeIcon />} />
             <Input secureTextEntry placeholder="Password" icon={<LockIcon />} />
-            <Button>
+            <Button onPress={() => router.replace("/(tabs)")}>
               <Typo
                 fontWeight={"600"}
                 size={14}
@@ -50,34 +53,33 @@ const login = () => {
               </Typo>
             </Button>
           </View>
-
-          
         </View>
-        
       </View>
-       {/* Footer Text */}
+      {/* Footer Text */}
 
-          <View style={styles.footerTextContainer}>
-            <Typo
-              fontWeight="400"
-              color={colors.textLight}
-              size={13}
-              style={styles.text}
-            >
-              Don't have an account?{" "}
-            </Typo>
-            <TouchableOpacity  onPress={()=>{router.navigate('/(auth)/register')}}>
-            <Typo
-              fontWeight="700"
-              color={colors.primary} // or any blue color you like
-              size={13}
-              style={[styles.text, { textDecorationLine: "underline" }]}
-             
-            >
-              Sign Up
-            </Typo>
-            </TouchableOpacity>
-          </View>
+      <View style={styles.footerTextContainer}>
+        <Typo
+          fontWeight="400"
+          color={colors.textLight}
+          size={13}
+          style={styles.text}
+        >
+          Don't have an account?{" "}
+        </Typo>
+        <TouchableOpacity
+          onPress={() => {
+            router.navigate("/(auth)/register");
+          }}
+        >
+          <Typo
+            fontWeight="700"
+            color={colors.primary} // or any blue color you like
+            size={13}
+          >
+            Sign Up
+          </Typo>
+        </TouchableOpacity>
+      </View>
     </ScreenWrapper>
   );
 };
@@ -104,11 +106,11 @@ const styles = StyleSheet.create({
     fontFamily: "Poppins-Regular",
     textAlign: "center",
   },
-  footerTextContainer:{
+  footerTextContainer: {
     paddingVertical: spacingY._10,
     alignItems: "center",
     flexDirection: "row",
     justifyContent: "center",
-    bottom:0,
-  }
+    bottom: 0,
+  },
 });

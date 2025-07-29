@@ -45,7 +45,11 @@ const forgotPassword = () => {
                 </Typo>
               </View>
               <View>
-                <TouchableOpacity onPress={() => {router.push("/(modals)/emailVerifyModal")}}>
+                <TouchableOpacity
+                  onPress={() => {
+                    router.push("/(modals)/emailVerifyModal");
+                  }}
+                >
                   <CaretRightIcon />
                 </TouchableOpacity>
               </View>
