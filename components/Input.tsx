@@ -1,6 +1,7 @@
 import { colors, radius, spacingX } from "@/constants/theme";
 import { InputProps } from "@/types";
 import { verticalScale } from "@/utils/styling";
+import { SlidersHorizontalIcon } from "phosphor-react-native";
 import React, { useState } from "react";
 import { StyleSheet, TextInput, View } from "react-native";
 import PhoneInput from "react-native-international-phone-number";
@@ -43,11 +44,19 @@ const Input = (props: InputProps) => {
         />
       )}
       <TextInput
-        style={[styles.inputStyle, props.inputStyle]}
-        placeholderTextColor={colors.neutral400}
-        {...props}
-        ref={props.inputRef}
-      ></TextInput>
+             style={[styles.inputStyle, props.inputStyle]}
+             placeholderTextColor={colors.neutral400}
+             onChangeText={props.onChangeText}
+             placeholder={props.placeholder}
+             value={inputValue}
+             ref={props.inputRef}
+/>
+      {props.filter && (
+        <View  style={{ paddingRight: spacingX._10 }}>
+      <SlidersHorizontalIcon/>
+          </View>
+      )}
+      
     </View>
   );
 };

@@ -107,6 +107,7 @@ export interface InputProps extends TextInputProps {
   inputRef?: React.RefObject<TextInput>;
   iconStyle?: TextStyle;
   countryCode?:Boolean;
+  filter?:Boolean;
   //   label?: string;
   //   error?: string;
 }
