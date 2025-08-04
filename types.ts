@@ -7,7 +7,7 @@ import {
   TextProps,
   TextStyle,
   TouchableOpacityProps,
-  ViewStyle
+  ViewStyle,
 } from "react-native";
 
 export type ScreenWrapperProps = {
@@ -63,8 +63,23 @@ export type HeaderProps = {
 export type BackButtonProps = {
   style?: ViewStyle;
   iconSize?: number;
+  color?:string;
+};
+export type LocationCardProps = {
+  image?: any;
+  name?: string;
+  address?: string;
+  rating?: number; // e.g. 4.0
+  distance?: number; // e.g. "25 km"
 };
 
+export type SearchItems = {
+  name?: string;
+  image?: any;
+  address?: string;
+  rating?: string;
+  distance?: number;
+};
 export type TransactionType = {
   id?: string;
   type: string;
@@ -106,8 +121,8 @@ export interface InputProps extends TextInputProps {
   inputStyle?: TextStyle;
   inputRef?: React.RefObject<TextInput>;
   iconStyle?: TextStyle;
-  countryCode?:Boolean;
-  filter?:Boolean;
+  countryCode?: Boolean;
+  filter?: Boolean;
   //   label?: string;
   //   error?: string;
 }

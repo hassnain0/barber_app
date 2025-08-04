@@ -15,6 +15,7 @@ export const colors = {
   green: "#16a34a",
   text_100:'#DFDEE4',
   text_200:'#C6C5CD',
+  text_600:"#454354",
   neutral50: "#F8F8F8",
   neutral100: "#f5f5f5",
   neutral200: "#e5e5e5",

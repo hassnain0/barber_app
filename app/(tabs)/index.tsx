@@ -85,7 +85,7 @@ const Home = () => {
 
   const saloonItemRender = ({ item, index }: any) => {
     return (
-      <View key={index} style={styles.saloon_slide}>
+      <TouchableOpacity onPress={()=>router.navigate('/screens/saloon_Detail')} key={index} style={styles.saloon_slide}>
         <Image source={item.image} style={styles.saloon_image} />
         <View>
           {/* Title Container */}
@@ -131,7 +131,7 @@ const Home = () => {
             </View>
           </View>
         </View>
-      </View>
+      </TouchableOpacity>
     );
   };
 
@@ -263,6 +263,7 @@ const Home = () => {
             </View>
 
             {/* Appointment Section */}
+            <Typo style={{fontFamily:"Poppins_600SemiBold"}} size={17}>Appointment</Typo>
             <View style={{
               backgroundColor: colors.primary,
               padding: verticalScale(20),
@@ -270,6 +271,7 @@ const Home = () => {
               alignItems: "center",
               marginTop: verticalScale(10),
             }}>
+            
               <View style={{
                 flexDirection: "row",
                 justifyContent: "space-between",
@@ -287,7 +289,7 @@ const Home = () => {
             {/* Services Section */}
             <View style={{ marginTop: verticalScale(10) }}>
               <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
-                <Typo fontWeight="600" size={17}>Services</Typo>
+                <Typo style={{fontFamily:'Poppins_600SemiBold'}} size={17}>Services</Typo>
                 <TouchableOpacity>
                   <Typo fontWeight="400" color={colors.neutral600} size={15}>View All</Typo>
                 </TouchableOpacity>
@@ -304,7 +306,7 @@ const Home = () => {
             {/* Nearest Saloon Section */}
             <View>
               <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
-                <Typo fontWeight="600" size={17}>Nearest Saloon</Typo>
+                <Typo style={{fontFamily:'Poppins_600SemiBold'}} size={17}>Nearest Saloon</Typo>
                 <TouchableOpacity>
                   <Typo fontWeight="400" color={colors.neutral600} size={15}>View All</Typo>
                 </TouchableOpacity>
@@ -327,7 +329,7 @@ const Home = () => {
                 marginTop: verticalScale(5),
               }}
             >
-              <Typo fontWeight="600" size={17}>Popular Saloon</Typo>
+              <Typo style={{fontFamily:"Poppins_600SemiBold"}} size={17}>Popular Saloon</Typo>
               <TouchableOpacity>
                 <Typo fontWeight="400" color={colors.neutral600} size={15}>View All</Typo>
               </TouchableOpacity>
@@ -344,7 +346,8 @@ export default Home;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: verticalScale(12),
+    padding: verticalScale(20),
+    paddingHorizontal:verticalScale(20),
     gap: verticalScale(10),
   },
   slide: {

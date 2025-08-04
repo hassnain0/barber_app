@@ -6,7 +6,7 @@ import { ArrowArcLeftIcon, ArrowLeftIcon, CaretLeftIcon } from "phosphor-react-n
 import { verticalScale } from "../utils/styling";
 import { colors, radius } from "@/constants/theme";
 
-const BackButton = ({ style, iconSize=25 }: BackButtonProps) => {
+const BackButton = ({ style, iconSize=25,color }: BackButtonProps) => {
   const router = useRouter();
  
   //Press Function
@@ -18,7 +18,7 @@ const BackButton = ({ style, iconSize=25 }: BackButtonProps) => {
       <ArrowLeftIcon
        
         size={verticalScale(iconSize)}
-        color={colors.black}
+        color={color||colors.black}
         weight="bold"
       ></ArrowLeftIcon>
     </TouchableOpacity>

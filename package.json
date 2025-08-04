@@ -11,9 +11,12 @@
     "lint": "expo lint"
   },
   "dependencies": {
+    "@delightfulstudio/react-native-wheel-picker-android": "^2.1.3",
+    "@expo-google-fonts/poppins": "^0.4.0",
     "@expo/vector-icons": "^14.1.0",
     "@react-native-clipboard/clipboard": "^1.16.3",
     "@react-native-community/datetimepicker": "8.4.1",
+    "@react-native-picker/picker": "2.11.1",
     "@react-navigation/bottom-tabs": "^7.4.4",
     "@react-navigation/elements": "^2.3.8",
     "@react-navigation/native": "^7.1.6",
@@ -36,15 +39,18 @@
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "react-native": "0.79.5",
+    "react-native-bouncy-checkbox": "^4.1.2",
     "react-native-gesture-handler": "~2.24.0",
     "react-native-international-phone-number": "^0.10.1",
+    "react-native-maps": "1.20.1",
     "react-native-reanimated": "~3.17.4",
     "react-native-safe-area-context": "5.4.0",
     "react-native-screens": "~4.11.1",
     "react-native-swiper": "^1.6.0",
     "react-native-web": "~0.20.0",
     "react-native-webview": "13.13.5",
-    "react-native-maps": "1.20.1"
+    "react-native-wheel-picker-android": "^2.0.6",
+    "react-native-wheel-picker-expo": "^0.5.4"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",

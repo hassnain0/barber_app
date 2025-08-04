@@ -1,14 +1,23 @@
 import Button from "@/components/Button";
 import Typo from "@/components/Typo";
 import { spacingX, spacingY } from "@/constants/theme";
+import {
+  Poppins_400Regular,
+  Poppins_600SemiBold,
+  Poppins_700Bold,
+  Poppins_500Medium
+} from "@expo-google-fonts/poppins";
 import { useFonts } from "expo-font";
 import { useRouter } from "expo-router";
 import React from "react";
 import { StyleSheet, View } from "react-native";
-
 const index = () => {
   const [fontsLoaded] = useFonts({
     "Poppins-Regular": require("../assets/fonts/Poppins-Regular.ttf"),
+    Poppins_600SemiBold,
+    Poppins_400Regular,
+    Poppins_700Bold,
+    Poppins_500Medium
   });
 
   const router = useRouter();
@@ -18,7 +27,7 @@ const index = () => {
 
   return (
     <View style={styles.container}>
-      <Button onPress={() => router.navigate("/(tabs)")}>
+      <Button onPress={() => router.navigate("/screens/saloon_Detail")}>
         <Typo>Hello</Typo>
       </Button>
     </View>
