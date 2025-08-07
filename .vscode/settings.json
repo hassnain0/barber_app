@@ -1,10 +1,12 @@
 {
+  // ===== Formatting =====
   "editor.formatOnSave": true,
   "editor.formatOnPaste": true,
   "editor.formatOnType": true,
-
+  "editor.formatOnSaveMode": "file",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
 
+  // ===== Prettier Rules =====
   "prettier.singleQuote": true,
   "prettier.trailingComma": "all",
   "prettier.semi": true,
@@ -13,18 +15,25 @@
   "prettier.bracketSpacing": true,
   "prettier.arrowParens": "avoid",
 
+  // ===== ESLint =====
   "eslint.validate": [
     "javascript",
     "javascriptreact",
     "typescript",
     "typescriptreact"
   ],
-
   "editor.codeActionsOnSave": {
     "source.fixAll": "explicit",
     "source.fixAll.eslint": "explicit"
   },
 
+  // ===== Language Specific Formatters =====
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "[typescript]": {
     "editor.defaultFormatter": "hb432.prettier-eslint-typescript"
   },
@@ -34,14 +43,23 @@
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
 
+  // ===== File Associations (Fix JSX Parsing) =====
+  "files.associations": {
+    "*.tsx": "typescriptreact",
+    "*.jsx": "javascriptreact"
+  },
+
+  // ===== File Exclusions =====
   "files.exclude": {
     "**/node_modules": true,
     "**/dist": true,
     "**/build": true
   },
-  "typescript.tsdk": "node_modules\\typescript\\lib",
-  "[jsonc]": {
-    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
-  }
+
+  // ===== TypeScript SDK =====
+  "typescript.tsdk": "node_modules\\typescript\\lib"
 }

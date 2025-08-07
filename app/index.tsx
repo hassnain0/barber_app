@@ -5,7 +5,7 @@ import {
   Poppins_400Regular,
   Poppins_600SemiBold,
   Poppins_700Bold,
-  Poppins_500Medium
+  Poppins_500Medium,
 } from "@expo-google-fonts/poppins";
 import { useFonts } from "expo-font";
 import { useRouter } from "expo-router";
