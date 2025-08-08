@@ -1,7 +1,7 @@
 import Button from "@/components/Button";
 import ScreenWrapper from "@/components/ScreenWrapper";
 import Typo from "@/components/Typo";
-import { colors, radius } from "@/constants/theme";
+import { colors, radius, spacingX, spacingY } from "@/constants/theme";
 import { scale, verticalScale } from "@/utils/styling";
 import { Image } from "expo-image";
 import { router } from "expo-router";
@@ -277,14 +277,14 @@ export default paymentVerifyModal;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingVertical: verticalScale(10),
-    paddingHorizontal: verticalScale(20),
+    paddingVertical: spacingY._10,
+    paddingHorizontal: spacingX._20,
   },
   cardContainer: {
     marginTop: verticalScale(20),
-    flexDirection: "row",
+    flexDirection: 'row',
     gap: verticalScale(2),
-    alignItems: "flex-start",
+    alignItems: 'flex-start',
   },
   cardImage: {
     height: verticalScale(100),
@@ -295,17 +295,17 @@ const styles = StyleSheet.create({
   starContainer: {
     gap: verticalScale(2),
     marginTop: verticalScale(5),
-    flexDirection: "row",
+    flexDirection: 'row',
   },
   serviceContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     gap: verticalScale(20),
     marginTop: verticalScale(10),
   },
   nestedServiceContainer: {
     gap: verticalScale(10),
-    flexDirection: "row",
+    flexDirection: 'row',
   },
 
   acitveItem: {
@@ -313,8 +313,8 @@ const styles = StyleSheet.create({
     borderWidth: 5,
   },
   paymentItem: {
-    flexDirection: "row",
-    justifyContent: "space-between",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     margin: verticalScale(6),
     gap: verticalScale(10),
     backgroundColor: colors.neutral50,

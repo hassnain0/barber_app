@@ -1,13 +1,12 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import {
-  Animated,
-  Dimensions,
   FlatList,
   StatusBar,
   StyleSheet,
   TouchableOpacity,
   View,
   ScrollView,
+  LogBox,
 } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import { Image, ImageBackground } from 'expo-image';
@@ -23,21 +22,15 @@ import {
   StarHalf,
 } from 'phosphor-react-native';
 import MasonryList from 'react-native-masonry-list';
-import {
-  ImageProps,
-  ImageURISource,
-  ImageResolvedAssetSource,
-} from 'react-native';
-
 import BackButton from '@/components/BackButton';
 import Button from '@/components/Button';
 import Typo from '@/components/Typo';
-import { colors, radius } from '@/constants/theme';
+import { colors, radius, spacingX } from '@/constants/theme';
 import { scale, verticalScale } from '@/utils/styling';
 import mapStyle from '@/constants/mapStyle2.json';
-import { CaretDown } from 'phosphor-react-native';
-const { width, height } = Dimensions.get('window');
+import { router } from 'expo-router';
 
+LogBox.ignoreAllLogs();
 const SaloonDetail = () => {
   const [selectedItem, setSelectedItem] = useState<string>('About');
 
@@ -63,7 +56,6 @@ const SaloonDetail = () => {
       </View>
     );
   };
-
   //Flat List Data
   const popularArtists = [
     {
@@ -88,6 +80,7 @@ const SaloonDetail = () => {
     },
   ];
   const listItems = ['About', 'Services', 'Packages', 'Gallery', 'Review'];
+
   const services = [
     { id: '1', name: 'Hair Wash', types: 12 },
     { id: '2', name: 'Hair Cut', types: 12 },
@@ -131,9 +124,13 @@ const SaloonDetail = () => {
   const barberSalonImages = [
     {
       uri: 'https://media.gettyimages.com/id/937443868/photo/barber-giving-a-haircut-in-his-shop.jpg?s=612x612&w=gi&k=20&c=fuDAUHsqwh1T0L4lfBVFIw5SFc6FZ0HXLUJtkr_3X_U=',
+      width: 612,
+      height: 408,
     },
     {
       uri: 'https://media.gettyimages.com/id/937443868/photo/barber-giving-a-haircut-in-his-shop.jpg?s=612x612&w=gi&k=20&c=fuDAUHsqwh1T0L4lfBVFIw5SFc6FZ0HXLUJtkr_3X_U=',
+      width: 612,
+      height: 408,
     },
     {
       uri: 'https://media.gettyimages.com/id/937443868/photo/barber-giving-a-haircut-in-his-shop.jpg?s=612x612&w=gi&k=20&c=fuDAUHsqwh1T0L4lfBVFIw5SFc6FZ0HXLUJtkr_3X_U=',
@@ -164,6 +161,7 @@ const SaloonDetail = () => {
     >
       <Image
         source={item.image}
+        contentFit="cover"
         style={{ width: scale(70), height: verticalScale(72) }}
       />
       <View style={{ alignItems: 'center', marginTop: verticalScale(5) }}>
@@ -199,9 +197,12 @@ const SaloonDetail = () => {
               {item.types} types
             </Typo>
             <TouchableOpacity
-              style={{ margin: 5 }}
+              style={{ margin: verticalScale(4) }}
               onPress={() => {
-                console.log('Pressed');
+                router.push({
+                  pathname: '/(modals)/typeDisplayModal',
+                  params: { Types: item.types },
+                });
               }}
             >
               <CaretDownIcon size={14} color={colors.textLight} />
@@ -271,14 +272,6 @@ const SaloonDetail = () => {
       </View>
     );
   };
-
-  const renderGalleryItem = ({ index, item }) => {
-    return (
-      <View style={{ flex: 1 }}>
-        <MasonryList images={item} columns={2} spacing={4} />
-      </View>
-    );
-  };
   const renderItem = ({ index, item }) => (
     <View
       style={[item === selectedItem ? styles.activeItem : styles.listItemStyle]}
@@ -298,7 +291,6 @@ const SaloonDetail = () => {
     console.log('Pressed Items', item);
     setSelectedItem(item);
   };
-
   const MapMarkers = [
     {
       latitude: 25.4304,
@@ -313,7 +305,6 @@ const SaloonDetail = () => {
       longitude: 68.2809,
     },
   ];
-
   return (
     <View style={{ flex: 1 }}>
       <ImageBackground
@@ -537,35 +528,50 @@ const SaloonDetail = () => {
               </View>
 
               <View style={styles.mapContainer}>
-                <MapView
-                  customMapStyle={mapStyle}
-                  style={StyleSheet.absoluteFillObject}
-                  initialRegion={{
-                    latitude: 25.4304,
-                    longitude: 68.2809,
-                    latitudeDelta: 10,
-                    longitudeDelta: 10,
-                  }}
-                >
-                  {MapMarkers.map((coord, index) => (
-                    <Marker coordinate={coord} key={index}>
-                      <Image
-                        source={require('../../assets/images/artistImage_1.png')}
-                        style={styles.marker}
-                      />
-                    </Marker>
-                  ))}
-                </MapView>
+                <View style={styles.mapWrapper}>
+                  <MapView
+                    customMapStyle={mapStyle}
+                    style={StyleSheet.absoluteFillObject}
+                    initialRegion={{
+                      latitude: 25.4304,
+                      longitude: 68.2809,
+                      latitudeDelta: 10,
+                      longitudeDelta: 10,
+                    }}
+                  >
+                    {MapMarkers.map((coord, index) => (
+                      <Marker coordinate={coord} key={index}>
+                        <Image
+                          source={require('../../assets/images/artistImage_1.png')}
+                          style={styles.marker}
+                        />
+                      </Marker>
+                    ))}
+                  </MapView>
+                </View>
               </View>
 
               <Button style={{ marginTop: verticalScale(20) }}>
-                <NavigationArrowIcon color={colors.white} />
-                <Typo
-                  style={{ fontFamily: 'Poppins_600SemiBold' }}
-                  color={colors.white}
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    marginLeft: spacingX._30,
+                  }}
                 >
-                  Get Directions - 4km
-                </Typo>
+                  <NavigationArrowIcon
+                    color={colors.white}
+                    style={{
+                      marginRight: verticalScale(10),
+                    }}
+                  />
+                  <Typo
+                    style={{ fontFamily: 'Poppins_600SemiBold' }}
+                    color={colors.white}
+                  >
+                    Get Directions - 4km
+                  </Typo>
+                </View>
               </Button>
             </>
           )}
@@ -583,6 +589,12 @@ const SaloonDetail = () => {
                   color={colors.white}
                 >
                   Book Now
+                </Typo>
+                <Typo
+                  style={{ fontFamily: 'Poppins_600SemiBold' }}
+                  color={colors.white}
+                >
+                  $ 8.12
                 </Typo>
               </Button>
             </View>
@@ -674,10 +686,13 @@ const styles = StyleSheet.create({
     padding: verticalScale(10),
   },
   mapContainer: {
-    width: '100%',
-    height: verticalScale(200),
-    padding: verticalScale(50),
-    borderRadius: radius._20,
+    padding: verticalScale(2), // Optional spacing around the map
+  },
+
+  mapWrapper: {
+    height: verticalScale(200), // Set height as needed
+    borderRadius: radius._10,
+    overflow: 'hidden', // IMPORTANT for borderRadius to work
   },
   marker: {
     width: verticalScale(30),
@@ -687,7 +702,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
   },
   serviceContainer: {
-    margin: verticalScale(8),
+    margin: verticalScale(5),
     padding: verticalScale(20),
     gap: verticalScale(10),
     flexDirection: 'row',

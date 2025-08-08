@@ -65,6 +65,13 @@ export type BackButtonProps = {
   iconSize?: number;
   color?:string;
 };
+export type ManTypeProps = {
+   name?: String,
+      booked?: number,
+      price?: number,
+      selected?: Boolean,
+      image?: any
+}
 export type LocationCardProps = {
   image?: any;
   name?: string;

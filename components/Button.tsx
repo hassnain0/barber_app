@@ -1,9 +1,16 @@
-import { colors, radius } from "@/constants/theme";
-import { CustomButtonProps } from "@/types";
-import { verticalScale } from "@/utils/styling";
-import React from "react";
-import { StyleSheet, TouchableOpacity, View } from "react-native";
-import Loading from "./Loading";
+import { colors, radius, spacingX } from '@/constants/theme';
+import { CustomButtonProps } from '@/types';
+import { verticalScale } from '@/utils/styling';
+import React from 'react';
+import {
+  StyleSheet,
+  TouchableOpacity,
+  View,
+  ViewStyle,
+  StyleProp,
+} from 'react-native';
+
+import Loading from './Loading';
 
 const Button = ({
   style,
@@ -13,13 +20,21 @@ const Button = ({
 }: CustomButtonProps) => {
   if (loading) {
     return (
-      <View style={[styles.button, style, { backgroundColor: "transparent" }]}>
+      <View style={[styles.button, style, { backgroundColor: 'transparent' }]}>
         <Loading />
       </View>
     );
   }
+
+  const childrenCount = React.Children.count(children);
+  const dynamicJustifyContent: StyleProp<ViewStyle> = {
+    justifyContent: childrenCount === 1 ? 'center' : 'space-between',
+  };
   return (
-    <TouchableOpacity onPress={onPress} style={[styles.button, style]}>
+    <TouchableOpacity
+      onPress={onPress}
+      style={[styles.button, style, dynamicJustifyContent]}
+    >
       {children}
     </TouchableOpacity>
   );
@@ -31,10 +46,11 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: colors.primary,
     borderRadius: radius._17,
-    borderCurve: "continuous",
+    borderCurve: 'continuous',
     height: verticalScale(60),
-    alignItems: "center",
-    flexDirection:"row",
-    justifyContent: "center",
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-between', // for spacing items across
+    paddingHorizontal: spacingX._20, // consistent spacing inside
   },
 });

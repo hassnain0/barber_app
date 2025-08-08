@@ -2,7 +2,7 @@ import Button from "@/components/Button";
 import Input from "@/components/Input";
 import ScreenWrapper from "@/components/ScreenWrapper";
 import Typo from "@/components/Typo";
-import { colors, radius, spacingX } from "@/constants/theme";
+import { colors, radius, spacingX, spacingY } from "@/constants/theme";
 import { verticalScale } from "@/utils/styling";
 import { Image } from "expo-image";
 import { MagnifyingGlassIcon, MapPinIcon, X } from "phosphor-react-native";
@@ -301,6 +301,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
+   
+        paddingVertical: spacingY._20,
   },
   containerStyle: {
     flexDirection: "row",
