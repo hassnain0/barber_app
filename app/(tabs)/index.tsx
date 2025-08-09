@@ -1,4 +1,5 @@
 import ScreenWrapper from '@/components/ScreenWrapper';
+import StarRating from '@/components/StarRating';
 import Typo from '@/components/Typo';
 import { colors, radius, spacingX } from '@/constants/theme';
 import { verticalScale } from '@/utils/styling';
@@ -143,27 +144,7 @@ const Home = () => {
     );
   };
 
-  const StarRating = ({ rating = 0, size = verticalScale(13) }) => {
-    const fullStars = Math.floor(rating);
-    const hasHalfStar = rating % 1 >= 0.5;
-    return (
-      <View style={styles.starContainer}>
-        {[...Array(5)].map((_, i) => {
-          if (i < fullStars) {
-            return <Star key={i} weight="fill" color="#FFAB36" size={size} />;
-          } else if (i === fullStars && hasHalfStar) {
-            return (
-              <StarHalf key={i} weight="fill" color="#FFAB36" size={size} />
-            );
-          } else {
-            return (
-              <Star key={i} weight="regular" color="#FFAB36" size={size} />
-            );
-          }
-        })}
-      </View>
-    );
-  };
+ 
 
   const popularSaloonItemRender = ({ item, index }: any) => {
     return (

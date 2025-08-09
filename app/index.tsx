@@ -27,7 +27,7 @@ const index = () => {
 
   return (
     <View style={styles.container}>
-      <Button onPress={() => router.navigate('/typeDisplayModal')}>
+      <Button onPress={() => router.navigate('/(tabs)')}>
         <Typo>Hello</Typo>
       </Button>
     </View>

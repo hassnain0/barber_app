@@ -1,5 +1,6 @@
 import Button from "@/components/Button";
 import ScreenWrapper from "@/components/ScreenWrapper";
+import StarRating from "@/components/StarRating";
 import Typo from "@/components/Typo";
 import { colors, radius, spacingX, spacingY } from "@/constants/theme";
 import { scale, verticalScale } from "@/utils/styling";
@@ -13,27 +14,6 @@ import BouncyCheckbox from "react-native-bouncy-checkbox";
 const paymentVerifyModal = () => {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
-  const StarRating = ({ rating = 0, size = verticalScale(13) }) => {
-    const fullStars = Math.floor(rating);
-    const hasHalfStar = rating % 1 >= 0.5;
-    return (
-      <View style={styles.starContainer}>
-        {[...Array(5)].map((_, i) => {
-          if (i < fullStars) {
-            return <Star key={i} weight="fill" color="#FFAB36" size={size} />;
-          } else if (i === fullStars && hasHalfStar) {
-            return (
-              <StarHalf key={i} weight="fill" color="#FFAB36" size={size} />
-            );
-          } else {
-            return (
-              <Star key={i} weight="regular" color="#FFAB36" size={size} />
-            );
-          }
-        })}
-      </View>
-    );
-  };
 
   const paymentData = [
     {

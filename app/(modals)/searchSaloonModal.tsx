@@ -1,9 +1,10 @@
 import Button from "@/components/Button";
 import Input from "@/components/Input";
 import ScreenWrapper from "@/components/ScreenWrapper";
+import Specialist from "@/components/Specialist";
 import Typo from "@/components/Typo";
 import { colors, radius, spacingX, spacingY } from "@/constants/theme";
-import { verticalScale } from "@/utils/styling";
+import { scale, verticalScale } from "@/utils/styling";
 import { Image } from "expo-image";
 import { MagnifyingGlassIcon, MapPinIcon, X } from "phosphor-react-native";
 import React, { useState } from "react";
@@ -114,42 +115,21 @@ const searchSaloon = () => {
     </View>
   );
 
-  const renderPopularArtist = ({ index, item }) => (
-    <View
-      key={index}
-      style={{
-        paddingHorizontal: verticalScale(20),
-        alignItems: "center",
-        marginVertical: verticalScale(10),
-      }}
-    >
-      <Image source={item.image} style={{ width: 64, height: 64 }} />
-      <View style={{ alignItems: "center", marginTop: verticalScale(5) }}>
-        <Typo size={13} color={colors.textDark}>
-          {item.name}
-        </Typo>
-        <Typo size={11} color={colors.text_200}>
-          {item.specilatiy}
-        </Typo>
-      </View>
-    </View>
-  );
-
   const renderSearchItem = ({ index, item }) => (
     <View
       key={index}
       style={{
-        flexDirection: "row",
+        flexDirection: 'row',
         paddingHorizontal: verticalScale(5),
-        alignItems: "flex-start",
-        marginVertical: verticalScale(15),
+        alignItems: 'flex-start',
+        marginVertical: verticalScale(10),
       }}
     >
       {/* Thumbnail */}
       <View
         style={{
           borderRadius: radius._17,
-          overflow: "hidden",
+          overflow: 'hidden',
           marginBottom: verticalScale(5),
         }}
       >
@@ -161,31 +141,47 @@ const searchSaloon = () => {
 
       {/* Details */}
       <View style={{ flex: 1, paddingHorizontal: verticalScale(20) }}>
-        <Typo size={15} color={colors.textDark}>
+        <Typo
+          size={15}
+          style={{ fontFamily: 'Poppins_600SemiBold' }}
+          color={colors.textDark}
+        >
           {item.name}
         </Typo>
-        <Typo size={15} color={colors.textLight}>
+        <Typo
+          size={15}
+          style={{ fontFamily: 'Poppins_400Regular' }}
+           color={colors.textLight}
+        >
           {item.address}
         </Typo>
 
         {/* Rating, Distance, Book Button */}
         <View
           style={{
-            flexDirection: "row",
+            flexDirection: 'row',
             marginTop: verticalScale(5),
-            justifyContent: "space-between",
-            alignItems: "center",
+            justifyContent: 'space-between',
+            alignItems: 'center',
           }}
         >
           {/* Left side: Rating + Distance */}
-          <View style={{ flexDirection: "row", alignItems: "center", gap: 10 }}>
-            <Typo size={13} color={"#FFAB36"}>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Typo
+              style={{ fontFamily: 'Poppins_400Regular' }}
+              size={13}
+              color={'#DB8827'}
+            >
               ⭐ {item.rating}
             </Typo>
-            <View style={{ flexDirection: "row", alignItems: "center" }}>
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
               <MapPinIcon size={15} color={colors.textDark} />
-              <Typo size={13} color={colors.textDark}>
-                {" "}
+              <Typo
+                size={13}
+                style={{ fontFamily: 'Poppins_400Regular' }}
+                color={colors.textDark}
+              >
+                {' '}
                 {item.distance} km
               </Typo>
             </View>
@@ -194,12 +190,11 @@ const searchSaloon = () => {
           {/* Right side: Book Button */}
           <Button
             style={{
-              width: 60,
-              height: verticalScale(30),
+              width: scale(60),
+              
+             
               borderRadius: radius._10,
               backgroundColor: colors.primary, // Adjust to your theme
-              justifyContent: "center",
-              alignItems: "center",
             }}
           >
             <Typo color={colors.white} size={13}>
@@ -262,16 +257,11 @@ const searchSaloon = () => {
               paddingTop: verticalScale(10),
             }}
           >
-            <Typo size={17} color={colors.textDark} fontWeight={"600"}>
+            <Typo size={17} color={colors.textDark} style={{fontFamily:'Poppins_600SemiBold'}}>
               Popular Artist
             </Typo>
             <View style={{ paddingTop: verticalScale(10) }}>
-              <FlatList
-                data={popularArtists}
-                renderItem={renderPopularArtist}
-                horizontal
-                showsHorizontalScrollIndicator={false}
-              />
+              <Specialist/>
             </View>
           </View>
           <View
@@ -280,7 +270,7 @@ const searchSaloon = () => {
               paddingTop: verticalScale(10),
             }}
           >
-            <Typo size={13} color={colors.textDark} fontWeight={"600"}>
+            <Typo size={13} color={colors.textDark} style={{fontFamily:'Poppins_600SemiBold'}}>
               Results Found(246)
             </Typo>
             <FlatList
@@ -301,8 +291,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
+    paddingHorizontal:spacingX._10,
    
-        paddingVertical: spacingY._20,
   },
   containerStyle: {
     flexDirection: "row",

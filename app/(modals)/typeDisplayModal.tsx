@@ -1,4 +1,10 @@
-import { FlatList, ScrollView, StyleSheet, TouchableOpacity, View } from 'react-native';
+import {
+  FlatList,
+  ScrollView,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import React, { useState } from 'react';
 import ScreenWrapper from '@/components/ScreenWrapper';
 import { colors, radius, spacingX, spacingY } from '@/constants/theme';
@@ -97,13 +103,13 @@ const manType: ManTypeProps[] = [
     image: require('@/assets/images/type_Image_4.png'),
   },
 ];
-const typeDisplayModal = () => {
-  const { Types } = useLocalSearchParams();
 
+const typeDisplayModal = () => {
+
+  const { Types } = useLocalSearchParams();
   const [selectedType, setSelectedType] = useState<String>('Man');
   const [types, setTypes] = useState<ManTypeProps[]>(manType);
   const router = useRouter();
-
   const numberOfItems = Types ? parseInt(Types as string, 10) : types.length;
   const dataToRender = types.slice(0, numberOfItems);
 
@@ -261,9 +267,15 @@ const typeDisplayModal = () => {
               showsVerticalScrollIndicator={false}
             />
           </View>
-         
         </View>
       </ScrollView>
+
+      {/* Footer Container */}
+      <Button style={{marginHorizontal:spacingX._10}}>
+        <Typo style={{fontFamily:'Poppins_600SemiBold'}} size={14} color={colors.white}>
+          Done
+        </Typo>
+      </Button>
     </ScreenWrapper>
   );
 };
