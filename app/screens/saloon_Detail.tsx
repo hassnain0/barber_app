@@ -8,7 +8,7 @@ import {
   ScrollView,
   LogBox,
 } from 'react-native';
-import { Image, ImageBackground } from 'expo-image';
+import {ImageBackground } from 'expo-image';
 import {
   Globe,
   HeartIcon,
@@ -16,60 +16,28 @@ import {
   PhoneCall,
   ShareNetwork,
 } from 'phosphor-react-native';
-import MasonryList from 'react-native-masonry-list';
 import BackButton from '@/components/BackButton';
 import Typo from '@/components/Typo';
 import { colors, radius, spacingX } from '@/constants/theme';
-import { scale, verticalScale } from '@/utils/styling';
-import { router } from 'expo-router';
+import {verticalScale } from '@/utils/styling';
 import Services from '@/components/Services';
 import About from '@/components/About';
 import Package from '@/components/Package';
 import StarRating from '@/components/StarRating';
 import Gallery from '@/components/Gallery';
 import Specialist from '@/components/Specialist';
+import Review from '@/components/Review'
 
 LogBox.ignoreAllLogs();
-const SaloonDetail = () => {
-  
-  
-  const [selectedItem, setSelectedItem] = useState<string>('About');
 
-  
+const SaloonDetail = () => {
+  const [selectedItem, setSelectedItem] = useState<string>('Review');
+
   //Flat List Data
-  
+
   const listItems = ['About', 'Services', 'Packages', 'Gallery', 'Review'];
 
-  const barberSalonImages = [
-    {
-      uri: 'https://media.gettyimages.com/id/937443868/photo/barber-giving-a-haircut-in-his-shop.jpg?s=612x612&w=gi&k=20&c=fuDAUHsqwh1T0L4lfBVFIw5SFc6FZ0HXLUJtkr_3X_U=',
-      width: 612,
-      height: 408,
-    },
-    {
-      uri: 'https://media.gettyimages.com/id/937443868/photo/barber-giving-a-haircut-in-his-shop.jpg?s=612x612&w=gi&k=20&c=fuDAUHsqwh1T0L4lfBVFIw5SFc6FZ0HXLUJtkr_3X_U=',
-      width: 612,
-      height: 408,
-    },
-    {
-      uri: 'https://media.gettyimages.com/id/937443868/photo/barber-giving-a-haircut-in-his-shop.jpg?s=612x612&w=gi&k=20&c=fuDAUHsqwh1T0L4lfBVFIw5SFc6FZ0HXLUJtkr_3X_U=',
-      dimensions: { width: 1080, height: 1920 },
-    },
-    {
-      uri: 'https://media.gettyimages.com/id/937443868/photo/barber-giving-a-haircut-in-his-shop.jpg?s=612x612&w=gi&k=20&c=fuDAUHsqwh1T0L4lfBVFIw5SFc6FZ0HXLUJtkr_3X_U=',
-    },
-    {
-      uri: 'https://media.gettyimages.com/id/937443868/photo/barber-giving-a-haircut-in-his-shop.jpg?s=612x612&w=gi&k=20&c=fuDAUHsqwh1T0L4lfBVFIw5SFc6FZ0HXLUJtkr_3X_U=',
-    },
-    {
-      uri: 'https://media.gettyimages.com/id/937443868/photo/barber-giving-a-haircut-in-his-shop.jpg?s=612x612&w=gi&k=20&c=fuDAUHsqwh1T0L4lfBVFIw5SFc6FZ0HXLUJtkr_3X_U=',
-    },
-  ];
 
-  // Render Items for Flat Li
- 
- 
- 
   const renderItem = ({ index, item }) => (
     <View
       style={[item === selectedItem ? styles.activeItem : styles.listItemStyle]}
@@ -89,7 +57,7 @@ const SaloonDetail = () => {
     console.log('Pressed Items', item);
     setSelectedItem(item);
   };
-  
+
   return (
     <View style={{ flex: 1 }}>
       <ImageBackground
@@ -184,7 +152,7 @@ const SaloonDetail = () => {
             >
               Saloon specialists
             </Typo>
-            <Specialist/>
+            <Specialist />
           </View>
 
           {/* Tabs */}
@@ -210,11 +178,7 @@ const SaloonDetail = () => {
           {selectedItem === 'Gallery' && <Gallery />}
 
           {/* Review Section */}
-          {selectedItem === 'Review' && (
-            <View style={{ flex: 1, marginTop: verticalScale(20) }}>
-              <MasonryList images={barberSalonImages} columns={3} spacing={0} />
-            </View>
-          )}
+          {selectedItem === 'Review' && <Review />}
         </View>
       </ScrollView>
     </View>
@@ -288,7 +252,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: verticalScale(20),
     padding: verticalScale(10),
   },
-  
+
   scrollableCard: {
     flex: 1,
     backgroundColor: colors.white,

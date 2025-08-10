@@ -144,8 +144,6 @@ const Home = () => {
     );
   };
 
- 
-
   const popularSaloonItemRender = ({ item, index }: any) => {
     return (
       <View key={index} style={styles.popular_saloon_slide}>

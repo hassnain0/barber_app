@@ -7,9 +7,7 @@ import Button from './Button';
 import { Image } from 'expo-image';
 
 const Package = () => {
- 
- 
-    const renderPackageItems = ({ index, item }) => {
+  const renderPackageItems = ({ index, item }) => {
     return (
       <View key={index} style={styles.packageContainer}>
         <Image source={item.image} style={styles.packageImage} />
@@ -52,12 +50,11 @@ const Package = () => {
 
             <Button
               style={{
-                width: scale(80),
+                width: scale(100),
                 height: verticalScale(30),
-                paddingVertical: verticalScale(4),
                 borderRadius: radius._10,
-                justifyContent: 'center',
                 alignItems: 'center',
+                justifyContent: 'center',
               }}
             >
               <Typo

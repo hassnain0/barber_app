@@ -1,90 +1,89 @@
-import Button from "@/components/Button";
-import Input from "@/components/Input";
-import ScreenWrapper from "@/components/ScreenWrapper";
-import Specialist from "@/components/Specialist";
-import Typo from "@/components/Typo";
-import { colors, radius, spacingX, spacingY } from "@/constants/theme";
-import { scale, verticalScale } from "@/utils/styling";
-import { Image } from "expo-image";
-import { MagnifyingGlassIcon, MapPinIcon, X } from "phosphor-react-native";
-import React, { useState } from "react";
+import Button from '@/components/Button';
+import Input from '@/components/Input';
+import ScreenWrapper from '@/components/ScreenWrapper';
+import Specialist from '@/components/Specialist';
+import Typo from '@/components/Typo';
+import { colors, radius, spacingX, spacingY } from '@/constants/theme';
+import { scale, verticalScale } from '@/utils/styling';
+import { Image } from 'expo-image';
+import { MagnifyingGlassIcon, MapPinIcon, X } from 'phosphor-react-native';
+import React, { useState } from 'react';
 import {
   FlatList,
   ScrollView,
   StyleSheet,
   TouchableOpacity,
   View,
-} from "react-native";
+} from 'react-native';
 const searchSaloon = () => {
-  //use State Hooks
-  const [selectedItem, setSelectedItem] = useState<string>("All");
+  const [selectedItem, setSelectedItem] = useState<string>('All');
 
   const searchItems = [
-    "All",
-    "Haircuts",
-    "MakeUp",
-    "Massage",
-    "Nails",
-    "Spa",
-    "Bridal",
-    "Packages",
+    'All',
+    'Haircuts',
+    'MakeUp',
+    'Massage',
+    'Nails',
+    'Spa',
+    'Bridal',
+    'Packages',
   ];
   const popularArtists = [
     {
-      name: "Lilly",
-      image: require("@/assets/images/artistImage_1.png"),
-      specilatiy: "Hair Stylist",
+      name: 'Lilly',
+      image: require('@/assets/images/artistImage_1.png'),
+      specilatiy: 'Hair Stylist',
     },
     {
-      name: "Lee",
-      image: require("@/assets/images/artistImage_2.png"),
-      specilatiy: "Hair Stylist",
+      name: 'Lee',
+      image: require('@/assets/images/artistImage_2.png'),
+      specilatiy: 'Hair Stylist',
     },
     {
-      name: "Connor",
-      image: require("@/assets/images/artistImage_3.png"),
-      specilatiy: "Hair Stylist",
+      name: 'Connor',
+      image: require('@/assets/images/artistImage_3.png'),
+      specilatiy: 'Hair Stylist',
     },
     {
-      name: "Jason",
-      image: require("@/assets/images/artistImage_4.png"),
-      specilatiy: "Hair Stylist",
+      name: 'Jason',
+      image: require('@/assets/images/artistImage_4.png'),
+      specilatiy: 'Hair Stylist',
     },
   ];
 
   const searchResults = [
     {
-      name: "Green Apple",
-      image: require("@/assets/images/saloon_Image_1.png"),
-      address: "123, Main Street, City",
+      name: 'Green Apple',
+      image: require('@/assets/images/saloon_Image_1.png'),
+      address: '123, Main Street, City',
       rating: 4.5,
       distance: 15,
     },
     {
-      name: "Green Apple",
-      image: require("@/assets/images/saloon_Image_2.png"),
-      address: "123, Main Street, City",
+      name: 'Green Apple',
+      image: require('@/assets/images/saloon_Image_2.png'),
+      address: '123, Main Street, City',
       rating: 4.5,
       distance: 15,
     },
     {
-      name: "Green Apple",
-      image: require("@/assets/images/saloon_Image_3.png"),
-      address: "123, Main Street, City",
+      name: 'Green Apple',
+      image: require('@/assets/images/saloon_Image_3.png'),
+      address: '123, Main Street, City',
       rating: 4.5,
       distance: 15,
     },
     {
-      name: "Green Apple",
-      image: require("@/assets/images/saloon_Image_1.png"),
-      address: "123, Main Street, City",
+      name: 'Green Apple',
+      image: require('@/assets/images/saloon_Image_1.png'),
+      address: '123, Main Street, City',
       rating: 4.5,
       distance: 15,
     },
     {
-      name: "Green Apple",
-      image: require("@/assets/images/saloon_Image_1.png"),
-      address: "123, Main Street, City",
+      name: 'Green Apple',
+      image: require('@/assets/images/saloon_Image_1.png'),
+      address: '123, Main Street, City',
       rating: 4.5,
       distance: 15,
     },
@@ -93,7 +92,7 @@ const searchSaloon = () => {
   const renderItem = ({ index, item }) => (
     <View
       style={{
-        flexDirection: "row",
+        flexDirection: 'row',
         gap: verticalScale(10),
         paddingHorizontal: verticalScale(20),
       }}
@@ -149,9 +148,9 @@ const searchSaloon = () => {
           {item.name}
         </Typo>
         <Typo
-          size={15}
+          size={13}
           style={{ fontFamily: 'Poppins_400Regular' }}
-           color={colors.textLight}
+          color={colors.textLight}
         >
           {item.address}
         </Typo>
@@ -165,43 +164,49 @@ const searchSaloon = () => {
             alignItems: 'center',
           }}
         >
+          
           {/* Left side: Rating + Distance */}
-          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
-            <Typo
-              style={{ fontFamily: 'Poppins_400Regular' }}
-              size={13}
-              color={'#DB8827'}
-            >
-              ⭐ {item.rating}
-            </Typo>
-            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-              <MapPinIcon size={15} color={colors.textDark} />
-              <Typo
-                size={13}
-                style={{ fontFamily: 'Poppins_400Regular' }}
-                color={colors.textDark}
-              >
-                {' '}
-                {item.distance} km
-              </Typo>
-            </View>
-          </View>
-
-          {/* Right side: Book Button */}
-          <Button
+          <View
             style={{
-              width: scale(60),
-              
-             
-              borderRadius: radius._10,
-              backgroundColor: colors.primary, // Adjust to your theme
+              flexDirection: 'row',
+              alignItems: 'center',
+              gap: 10,
+              justifyContent: 'space-between',
             }}
           >
-            <Typo color={colors.white} size={13}>
-              Book
-            </Typo>
-          </Button>
+            <View
+              style={{
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                gap: verticalScale(20),
+              }}
+            >
+              <Typo
+                style={{ fontFamily: 'Poppins_400Regular' }}
+                size={13}
+                color={'#DB8827'}
+              >
+                ⭐ {item.rating}
+              </Typo>
+              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                <MapPinIcon size={15} color={colors.textDark} />
+                <Typo
+                  size={13}
+                  style={{ fontFamily: 'Poppins_400Regular' }}
+                  color={colors.textDark}
+                >
+                  {' '}
+                  {item.distance} km
+                </Typo>
+              </View>
+            </View>
+
+            {/* Right side: Book Button */}
+            
+          </View>
+         
         </View>
+     
       </View>
     </View>
   );
@@ -219,8 +224,8 @@ const searchSaloon = () => {
         <View style={styles.container}>
           <View
             style={{
-              alignItems: "center",
-              flexDirection: "row",
+              alignItems: 'center',
+              flexDirection: 'row',
               paddingHorizontal: verticalScale(20),
               paddingTop: verticalScale(10),
             }}
@@ -239,7 +244,7 @@ const searchSaloon = () => {
           </View>
           <View
             style={{
-              flexDirection: "row",
+              flexDirection: 'row',
               gap: verticalScale(20),
               marginTop: verticalScale(20),
             }}
@@ -257,11 +262,15 @@ const searchSaloon = () => {
               paddingTop: verticalScale(10),
             }}
           >
-            <Typo size={17} color={colors.textDark} style={{fontFamily:'Poppins_600SemiBold'}}>
+            <Typo
+              size={17}
+              color={colors.textDark}
+              style={{ fontFamily: 'Poppins_600SemiBold' }}
+            >
               Popular Artist
             </Typo>
             <View style={{ paddingTop: verticalScale(10) }}>
-              <Specialist/>
+              <Specialist />
             </View>
           </View>
           <View
@@ -270,7 +279,11 @@ const searchSaloon = () => {
               paddingTop: verticalScale(10),
             }}
           >
-            <Typo size={13} color={colors.textDark} style={{fontFamily:'Poppins_600SemiBold'}}>
+            <Typo
+              size={13}
+              color={colors.textDark}
+              style={{ fontFamily: 'Poppins_600SemiBold' }}
+            >
               Results Found(246)
             </Typo>
             <FlatList
@@ -290,27 +303,26 @@ export default searchSaloon;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    paddingHorizontal:spacingX._10,
-   
+    justifyContent: 'center',
+    paddingHorizontal: spacingX._10,
   },
   containerStyle: {
-    flexDirection: "row",
+    flexDirection: 'row',
     height: verticalScale(60),
-    alignItems: "center",
+    alignItems: 'center',
     backgroundColor: colors.neutral50,
-    justifyContent: "center",
+    justifyContent: 'center',
     borderColor: colors.neutral300,
     borderRadius: radius._17,
-    borderCurve: "continuous",
+    borderCurve: 'continuous',
     gap: spacingX._20,
     marginTop: spacingX._10,
-    width: "90%",
+    width: '90%',
   },
   starContainer: {
     gap: verticalScale(2),
     marginTop: verticalScale(5),
-    flexDirection: "row",
+    flexDirection: 'row',
   },
   itemText: {
     fontSize: 16,
@@ -318,7 +330,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
   },
   activeItem: {
-    fontWeight: "bold",
+    fontWeight: 'bold',
     color: colors.textDark,
   },
   underline: {

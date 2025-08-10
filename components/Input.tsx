@@ -45,7 +45,8 @@ const Input = (props: InputProps) => {
       )}
       <TextInput
              style={[styles.inputStyle, props.inputStyle]}
-             placeholderTextColor={colors.neutral400}
+        placeholderTextColor={colors.neutral400}
+        
              onChangeText={props.onChangeText}
              placeholder={props.placeholder}
              value={inputValue}
